@@ -1,0 +1,26 @@
+﻿@model BugTrackerSuite.Models.ProjectUserViewModel
+@{
+    ViewBag.Title = "Edit Project User";
+}
+
+<h2>Assign Users to Project</h2>
+<hr />
+
+@using (Html.BeginForm("EditProjectUsers", "Project", FormMethod.Post))
+{
+
+    <h3>
+        Project Name :  @Model.AssignProject.Title
+        <input type = "submit" value="Assign Projects" class="btn btn-default pull-right" style="margin-top: -7px"/>
+    </h3>
+    <hr />
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.AssignProjectId)
+@Html.ListBox("SelectedUsers", Model.Users)
+    <button type="submit">Submit</button>
+}
+
+<div style="margin-top: 40px">
+    @Html.ActionLink("Back to Admin Index", "Index")
+</div>
