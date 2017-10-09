@@ -273,19 +273,15 @@ namespace BugTrackerSuite.Controllers
         public ActionResult CommentCreate([Bind(Include = "Id,TicketId,Body")] TicketComment ticketComment)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
+            var ticket = db.Tickets.Find(ticketComment.TicketId);
 
-            if (ModelState.IsValid && (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticketComment.Ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticketComment.Ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticketComment.AuthorId == user.Id)))
-
-
-
+            if (ModelState.IsValid && (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticket.OwnerUserId == user.Id)))
             {
-
                 ticketComment.Created = DateTime.Now;
                 ticketComment.AuthorId = User.Identity.GetUserId();
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
 
-                var ticket = db.Tickets.Find(ticketComment.TicketId);
                 return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
             }
 
@@ -355,7 +351,7 @@ namespace BugTrackerSuite.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Posts/Create
+        // GET: Attachment/Create
         public ActionResult AttachmentCreate()
         {
             return View();

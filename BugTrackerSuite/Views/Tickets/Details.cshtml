@@ -11,7 +11,8 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
+            Assigned User
+            @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
         </dt>
 
         <dd>
@@ -19,7 +20,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
+            Owner First Name
+            @*@Html.DisplayNameFor(model => model.OwnerUser.FirstName)*@
         </dt>
 
         <dd>
@@ -35,7 +37,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TickerType.Name)
+            Ticket Type
+            @*@Html.DisplayNameFor(model => model.TickerType.Name)*@
         </dt>
 
         <dd>
@@ -43,7 +46,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
+            Ticket Priority
+            @*@Html.DisplayNameFor(model => model.TicketPriority.Name)*@
         </dt>
 
         <dd>
@@ -51,7 +55,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TicketStatus.Name)
+            Ticket Status
+            @*@Html.DisplayNameFor(model => model.TicketStatus.Name)*@
         </dt>
 
         <dd>
@@ -142,7 +147,7 @@
         <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
-                <h5 class="mt-0">@comment.Author.FullName</h5>@*<span>Posted on @comment.Created</span>*@
+                <h5 class="mt-0">@comment.Author.FullName</h5><span>Posted on @comment.Created</span>
                 <p>@comment.Body</p>
             </div>
         </div>

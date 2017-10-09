@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Created, "MM-dd-yyyy hh:mm:ss")
+            @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Updated)
@@ -49,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM-dd-yyyy hh:mm:ss")
+            @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AuthorId)

@@ -1,5 +1,6 @@
 ﻿using BugTrackerSuite.Models;
 using BugTrackerSuite.Models.Helpers;
+using BugTrackerSuite.Models.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -76,19 +77,16 @@ namespace BugTrackerSuite.Controllers
 
 
 
-        //// GET: Project/Details/5
-        //public ActionResult Details(int? id)
+        // GET: Project/Details/5
+        //public ActionResult Details(string Id)
         //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Project project = db.Projects.Find(id);
-        //    if (project == null)
+           
+        //    UserProfileViewModel user = db.Users.Find(Id);
+        //    if (user == null)
         //    {
         //        return HttpNotFound();
         //    }
-        //    return View(project);
+        //    return View(user);
         //}
 
     }
