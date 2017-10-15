@@ -162,7 +162,7 @@ namespace BugTrackerSuite.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles ="Admin ,Project Manager")]
+        [Authorize(Roles = "Admin ,Project Manager")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
         {
@@ -175,47 +175,106 @@ namespace BugTrackerSuite.Controllers
                 ApplicationUser newDev = new ApplicationUser();
                 if (oldTicket.AssignToUserId != ticket.AssignToUserId)
                 {
-                    if (ticket.AssignToUserId != null)
+
+                    if (oldTicket.AssignToUserId != null)
                     {
-                        if(oldTicket.AssignToUserId != null)
-                        {
-                            oldDev = db.Users.Find(oldTicket.AssignToUserId);
-                        }
-                        newDev = db.Users.Find(ticket.AssignToUserId);
-                        ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
-                        ticketHistory.Created = DateTime.Now;
-                        ticketHistory.Property = "TICKET ASSIGNED";
-                        ticketHistory.TicketId = ticket.Id;
-                        ticketHistory.OldValue = oldDev.FullName;
-                        ticketHistory.NewValue = newDev.FullName;
+                        oldDev = db.Users.Find(oldTicket.AssignToUserId);
                     }
-
-                    IdentityMessage messageforNewDev = new IdentityMessage();
-                    messageforNewDev.Subject = "Bugtracker Notifications";
-                    if(oldDev != null)
-                    {
-                        messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
-                    }
-                    else
-                    {
-                        messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName }.";
-                    }
-
-                    messageforNewDev.Destination = newDev.Email;
-                    EmailService email = new EmailService();
-                    email.SendAsync(messageforNewDev);
-                    //if (oldDev != null)
-                    //{
-                    //    IdentityMessage messageforOldDev = new IdentityMessage();
-
-                    //    messageforOldDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
-                    //    messageforOldDev.Subject = "Bugtracker Notifications";
-                    //    messageforOldDev.Destination = oldDev.Email;
-
-                    //    EmailService emailOld = new EmailService();
-                    //    await emailOld.SendAsync(messageforOldDev);
-                    //}
+                    newDev = db.Users.Find(ticket.AssignToUserId);
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET ASSIGNED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldDev.FullName;
+                    ticketHistory.NewValue = newDev.FullName;
+                    db.TicketHistories.Add(ticketHistory);
                 }
+
+                if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
+                {
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET PRIORITY CHANGED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldTicket.TicketPriority.Name;
+                    //ticketHistory.NewValue = ticket.TicketPriority.Name;
+                    db.TicketHistories.Add(ticketHistory);
+                }
+
+                if (oldTicket.Title != ticket.Title)
+                {
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET TITLE CHANGED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldTicket.Title;
+                    ticketHistory.NewValue = ticket.Title;
+                    db.TicketHistories.Add(ticketHistory);
+                }
+
+                if (oldTicket.Description != ticket.Description)
+                {
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET DESCRIPTION CHANGED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldTicket.Description;
+                    ticketHistory.NewValue = ticket.Description;
+                    db.TicketHistories.Add(ticketHistory);
+                }
+
+                if (oldTicket.TicketStatusId != ticket.TicketStatusId)
+                {
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET STATUS CHANGED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldTicket.TicketStatus.Name;
+                    //ticketHistory.NewValue = ticket.TicketStatus.Name;
+                    db.TicketHistories.Add(ticketHistory);
+                }
+
+                if (oldTicket.TicketTypeId != ticket.TicketTypeId)
+                {
+                    ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+                    ticketHistory.Created = DateTime.Now;
+                    ticketHistory.Property = "TICKET TYPE CHANGED";
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.OldValue = oldTicket.TickerType.Name;
+                    //ticketHistory.NewValue = ticket.TickerType.Name;
+                    db.TicketHistories.Add(ticketHistory);
+                }
+
+                IdentityMessage messageforNewDev = new IdentityMessage();
+                messageforNewDev.Subject = "Bugtracker Notifications";
+                if (oldDev != null)
+                {
+                    messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
+                }
+                else
+                {
+                    messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName }.";
+                }
+
+                messageforNewDev.Destination = newDev.Email;
+                EmailService email = new EmailService();
+                email.SendAsync(messageforNewDev);
+                //if (oldDev != null)
+                //{
+                //    IdentityMessage messageforOldDev = new IdentityMessage();
+
+                //    messageforOldDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
+                //    messageforOldDev.Subject = "Bugtracker Notifications";
+                //    messageforOldDev.Destination = oldDev.Email;
+
+                //    EmailService emailOld = new EmailService();
+                //    await emailOld.SendAsync(messageforOldDev);
+                //}
+            
+
+        
+
+
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
