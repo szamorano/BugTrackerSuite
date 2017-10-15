@@ -1869,7 +1869,7 @@
     <Content Include="Views\Project\EditProjectUsers.cshtml" />
     <Content Include="Views\Manage\ChangeName.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Shared\_NewTemplateLayout.cshtml" />
+    <Content Include="Views\Shared\_ModernLayout.cshtml" />
     <Content Include="TicketAttachments\applying_emailservice.pdf" />
     <Content Include="TicketAttachments\bootstrap_3.pptx" />
     <Content Include="TicketAttachments\project_deliverables_-_week_1portfolio.pdf" />

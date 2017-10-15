@@ -72,3 +72,4 @@ C:\Users\User\Documents\Visual Studio 2017\Projects\BugTrackerSuite\BugTrackerSu
 C:\Users\User\Documents\Visual Studio 2017\Projects\BugTrackerSuite\BugTrackerSuite\obj\Debug\BugTrackerSuite.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Visual Studio 2017\Projects\BugTrackerSuite\BugTrackerSuite\obj\Debug\BugTrackerSuite.dll
 C:\Users\User\Documents\Visual Studio 2017\Projects\BugTrackerSuite\BugTrackerSuite\obj\Debug\BugTrackerSuite.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\BugTrackerSuite\BugTrackerSuite\obj\Debug\BugTrackerSuite.csprojResolveAssemblyReference.cache

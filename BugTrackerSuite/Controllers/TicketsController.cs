@@ -543,25 +543,20 @@ namespace BugTrackerSuite.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost, ActionName("AttachmentDelete")]
         [ValidateAntiForgeryToken]
-        public ActionResult AttachmentDelete(IEnumerable<HttpPostedFileBase> files, int ticketId)
+        public ActionResult AttachmentDeleteConfirmed(IEnumerable<HttpPostedFileBase> files, int id)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
-            Ticket ticket = db.Tickets.Find(ticketId);
+            Ticket ticket = new Ticket();
             if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticket.OwnerUserId == user.Id))
             {
-                foreach (var file in files)
-                {
-                    TicketAttachment attachment = new TicketAttachment();
-                    TicketHistory ticketHistory = new TicketHistory();
 
-                    file.SaveAs(Path.Combine(Server.MapPath("~/TicketAttachments/"), Path.GetFileName(file.FileName)));
-                    attachment.FileUrl = file.FileName;
+                TicketHistory ticketHistory = new TicketHistory();
+                TicketAttachment attachment = db.TicketAttachments.Find(id);
 
-                    attachment.AuthorId = User.Identity.GetUserId();
-                    attachment.TicketId = ticketId;
-                    attachment.Created = DateTimeOffset.Now;
+
+                    
 
                     db.TicketAttachments.Remove(attachment);
 
@@ -569,13 +564,13 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.Created = DateTime.Now;
                     ticketHistory.Property = "ATTACHMENT REMOVED";
                     ticketHistory.NewValue = attachment.FileUrl;
-                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.TicketId = attachment.TicketId;
                     db.TicketHistories.Add(ticketHistory);
                     db.SaveChanges();
-                }
+                
             }
 
-            return RedirectToAction("Details", "Tickets", new { id = ticketId });
+            return RedirectToAction("Index");
         }
 
 
