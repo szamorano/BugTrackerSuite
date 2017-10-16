@@ -164,7 +164,7 @@ namespace BugTrackerSuite.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin ,Project Manager")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
+        public async Task<ActionResult> EditAsync([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
         {
 
             TicketHistory ticketHistory = new TicketHistory();
@@ -259,6 +259,7 @@ namespace BugTrackerSuite.Controllers
                 messageforNewDev.Destination = newDev.Email;
                 EmailService email = new EmailService();
                 email.SendAsync(messageforNewDev);
+
                 //if (oldDev != null)
                 //{
                 //    IdentityMessage messageforOldDev = new IdentityMessage();
@@ -270,9 +271,9 @@ namespace BugTrackerSuite.Controllers
                 //    EmailService emailOld = new EmailService();
                 //    await emailOld.SendAsync(messageforOldDev);
                 //}
-            
 
-        
+
+
 
 
                 db.Entry(ticket).State = EntityState.Modified;
