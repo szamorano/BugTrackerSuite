@@ -71,7 +71,5 @@ namespace BugTrackerSuite.Models
         public DbSet<TicketPriority> TicketPriorities { get; set; }
         public DbSet<TicketStatus> TicketStatuses { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
-        public IEnumerable ApplicationUsers { get; internal set; }
-
     }
 }

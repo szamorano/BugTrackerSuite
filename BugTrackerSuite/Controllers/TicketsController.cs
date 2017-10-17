@@ -164,7 +164,7 @@ namespace BugTrackerSuite.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin ,Project Manager")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAsync([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
         {
 
             TicketHistory ticketHistory = new TicketHistory();
@@ -188,6 +188,8 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldDev.FullName;
                     ticketHistory.NewValue = newDev.FullName;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
                 }
 
                 if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
@@ -199,6 +201,8 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldTicket.TicketPriority.Name;
                     //ticketHistory.NewValue = ticket.TicketPriority.Name;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
                 }
 
                 if (oldTicket.Title != ticket.Title)
@@ -210,6 +214,8 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldTicket.Title;
                     ticketHistory.NewValue = ticket.Title;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
                 }
 
                 if (oldTicket.Description != ticket.Description)
@@ -221,6 +227,8 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldTicket.Description;
                     ticketHistory.NewValue = ticket.Description;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
                 }
 
                 if (oldTicket.TicketStatusId != ticket.TicketStatusId)
@@ -232,6 +240,9 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldTicket.TicketStatus.Name;
                     //ticketHistory.NewValue = ticket.TicketStatus.Name;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
+
                 }
 
                 if (oldTicket.TicketTypeId != ticket.TicketTypeId)
@@ -243,7 +254,10 @@ namespace BugTrackerSuite.Controllers
                     ticketHistory.OldValue = oldTicket.TickerType.Name;
                     //ticketHistory.NewValue = ticket.TickerType.Name;
                     db.TicketHistories.Add(ticketHistory);
+                    db.SaveChanges();
+
                 }
+
 
                 IdentityMessage messageforNewDev = new IdentityMessage();
                 messageforNewDev.Subject = "Bugtracker Notifications";
@@ -256,9 +270,9 @@ namespace BugTrackerSuite.Controllers
                     messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName }.";
                 }
 
-                messageforNewDev.Destination = newDev.Email;
+                messageforNewDev.Destination = db.Users.Find(ticket.AssignToUserId).Email;
                 EmailService email = new EmailService();
-                email.SendAsync(messageforNewDev);
+                await email.SendAsync(messageforNewDev);
 
                 //if (oldDev != null)
                 //{
@@ -273,9 +287,6 @@ namespace BugTrackerSuite.Controllers
                 //}
 
 
-
-
-
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -285,6 +296,17 @@ namespace BugTrackerSuite.Controllers
             var devsOnTicketProject = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
 
             db.TicketHistories.Add(ticketHistory);
+
+            //if (UserRoleHelper.ListRoleUsers("Developer").Where(u => helper.UserIsOnProject(u.Id, ticket.ProjectId)).Count() > 0)
+            //{
+            //    vm.AssignToUserList = new SelectList(roleHelper.ListRoleUsers("Developer").Where(u => helper.UserIsOnProject(u.Id, ticket.ProjectId)), "Id", "FullName", vm.AssignToUserId);
+            //}
+            //else
+            //{
+            //    vm.AssignToUserList = null;
+            //}
+
+
             ViewBag.AssignToUserId = new SelectList(devsOnTicketProject, "Id", "FirstName", ticket.AssignToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
@@ -425,7 +447,7 @@ namespace BugTrackerSuite.Controllers
         // GET: Comments/Create
         public ActionResult CommentCreate()
         {
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName");
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
             ViewBag.PostId = new SelectList(db.Tickets, "Id", "Title");
             return View();
         }
@@ -480,7 +502,7 @@ namespace BugTrackerSuite.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName", comment.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
             ViewBag.PostId = new SelectList(db.Tickets, "Id", "Title", comment.TicketId);
             return View(comment);
         }
@@ -498,7 +520,7 @@ namespace BugTrackerSuite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AuthorId = new SelectList(db.ApplicationUsers, "Id", "FirstName", comment.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
             ViewBag.PostId = new SelectList(db.Tickets, "Id", "Title", comment.TicketId);
             return View(comment);
         }
