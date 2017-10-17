@@ -3386,6 +3386,8 @@
     <Content Include="Views\Home\Index - Copy.cshtml" />
     <Content Include="Views\Home\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Account\ForgotPassword - Copy.cshtml" />
+    <Content Include="Views\Account\Register - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

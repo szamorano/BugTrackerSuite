@@ -67,18 +67,18 @@
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Email" })
                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                 </div>
                                 <button type="submit" value="Log in" class="btn btn-success btn-block">Login</button>
-                                @Html.ActionLink("Forgot your password?", "ForgotPassword", new { @class = "display-block text-center m-t-md text-sm" })
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "display-block text-center m-t-md text-sm "})
                                 @*< a href="forgot.html" class="display-block text-center m-t-md text-sm">Forgot Password?</a>*@
                                 <p class="text-center m-t-xs text-sm">Do not have an account?</p>
-                                @Html.ActionLink("Register as a new user", "Register")
+                                @Html.ActionLink("Register as a new user", "Register", null, new { @class = "display-block text-center m-t-md text-sm" })
                                 @*<a href="register.html" class="btn btn-default btn-block m-t-md">Create an account</a>*@
                                 }
                             @*</form>*@
