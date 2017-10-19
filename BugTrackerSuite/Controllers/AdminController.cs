@@ -17,7 +17,7 @@ namespace BugTrackerSuite.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         //private UserRoleHelper helper = new UserRoleHelper();
-        
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -80,7 +80,7 @@ namespace BugTrackerSuite.Controllers
         // GET: Project/Details/5
         //public ActionResult Details(string Id)
         //{
-           
+
         //    UserProfileViewModel user = db.Users.Find(Id);
         //    if (user == null)
         //    {
@@ -88,6 +88,17 @@ namespace BugTrackerSuite.Controllers
         //    }
         //    return View(user);
         //}
+
+
+
+
+
+        public ActionResult ProfilePage()
+        {
+            ViewBag.Message = "Your TimeLine page.";
+
+            return View();
+        }
 
     }
 }

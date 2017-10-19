@@ -98,9 +98,9 @@
             File Upload
         </dt>
 
+           
 
-
-    </dl>
+</dl>
 </div>
 
 @using (Html.BeginForm("AttachmentCreate", "Tickets", FormMethod.Post, new { @class = "ticket-ticketAttachment", enctype = "multipart/form-data" }))
@@ -110,7 +110,7 @@
 
     <input type="file" name="files" multiple required />
 
-    <input type="hidden" name="ticketId" value="@Model.Id" hidden />
+                <input type="hidden" name="ticketId" value="@Model.Id" hidden />
 
                 <button class="btn btn-default btn-lg" type="submit">Attach</button>}
 
@@ -136,7 +136,7 @@
                 <input type="number" name="TicketId" value="@Model.Id" hidden />
                 @*<input type="text" name="Body" rows="7" required />*@
             </div>
-            <button type="submit" class="btn btn-primary" value="Send">Submit</button>
+                        <button type="submit" class="btn btn-primary" value="Send">Submit</button>
         }
     </div>
 </div>
@@ -168,63 +168,36 @@
 @*<hr style="border-color: #808080;" />*@
 
 @*@foreach (var history in Model.Histories)
-    {
-        if (history != null && history.AuthorId != null)
-        {
-            if (history.Property == "NEW TICKET COMMENT")
-            {
-                <div>
-                    <p>
-                        <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
-                        @history.Created<br />
-                        <em>"@history.NewValue"</em>
-                    </p>
-                </div>
-            }
-            else if (history.Property == "NEW TICKET ATTACHMENT")
-            {
-                <div>
-                    <p>
-                        <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
-                        @history.Created<br />
-                        <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
-                    </p>
-                </div>
-            }
-            <hr />
-
-        }
-    }*@
-
-<div id="main-wrapper">
-    <div class="row">
-        <div class="col-md-12">
-            <section id="cd-timeline" class="cd-container">
-@foreach (var history in Model.Histories)
 {
+    if (history != null && history.AuthorId != null)
+    {
+        if (history.Property == "NEW TICKET COMMENT")
+        {
+            <div>
+                <p>
+                    <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                    @history.Created<br />
+                    <em>"@history.NewValue"</em>
+                </p>
+            </div>
+        }
+        else if (history.Property == "NEW TICKET ATTACHMENT")
+        {
+            <div>
+                <p>
+                    <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                    @history.Created<br />
+                    <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+                </p>
+            </div>
+        }
+        <hr />
 
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img cd-success">
-                        <i class="fa fa-tag"></i>
-                    </div> <!-- cd-timeline-img -->
-
-                    <div class="cd-timeline-content">
-                        <h2>@history.Property</h2><span></span>
-                        <p>"@history.NewValue"</p>
-                        <span class="cd-date">@history.Author.FullName - @history.Created</span>
-                    </div> <!-- cd-timeline-content -->
-                </div> <!-- cd-timeline-block -->
-}
-            </section> <!-- cd-timeline -->
-        </div>
-    </div><!-- Row -->
-</div><!-- Main Wrapper -->
+    }
+}*@
 
 
-
-
-
-<!--History Works-->
+<!--Chri-->
 @foreach (var history in Model.Histories)
 {
     if (history != null && history.AuthorId != null)
@@ -281,33 +254,33 @@
 
 <!--  DEX  -->
 @*@foreach (var history in Model.Histories)
+{
+    if (history != null && history.AuthorId != null)
     {
-        if (history != null && history.AuthorId != null)
-        {
-            <div>
-            <p><span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
-            <em>"@history.NewValue"</em>
-            </div>
+        <div>
+        <p><span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
+        <em>"@history.NewValue"</em>
+        </div>
 
-            <hr/>
-        }
+        <hr/>
+    }
 
-        else if (history.Property == "NEW TICKET ATTACHMENT")
-        {
-            <div>
-                <p>
-                    <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
-                    @history.Created<br />
-                    <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
-                </p>
-            </div>
-        }
-            <hr style="border-color: #808080;" />
-            @history.Created
-            <br />
-            <a href="~/TicketAttachments/@history.NewValue">@history.NewValue</a>
+    else if (history.Property == "NEW TICKET ATTACHMENT")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+            </p>
+        </div>
+    }
+        <hr style="border-color: #808080;" />
+        @history.Created
+        <br />
+        <a href="~/TicketAttachments/@history.NewValue">@history.NewValue</a>
 
-        }*@
+    }*@
 
 
 
@@ -318,15 +291,6 @@
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-
+    
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-
-
-
-@section scripts{
-    @*Javascripts*@
-    <script src="~/admin1/assets/plugins/vertical-timeline/js/main.js"></script>
-    <script src="~/admin1/assets/js/pages/timeline.js"></script>
-}

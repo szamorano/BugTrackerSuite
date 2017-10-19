@@ -30,7 +30,8 @@ namespace BugTrackerSuite.Controllers
 
             if (User.IsInRole("Admin"))
             {
-                return View(db.Tickets.ToList());
+                var tickets = db.Tickets.ToList();
+                return View(tickets);
             }
             else if (User.IsInRole("Project Manager"))
             {
@@ -655,7 +656,12 @@ namespace BugTrackerSuite.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult TimeLine()
+        {
+            ViewBag.Message = "Your TimeLine page.";
 
+            return View();
+        }
 
 
 

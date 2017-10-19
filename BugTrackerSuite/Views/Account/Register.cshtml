@@ -56,7 +56,7 @@
                     <div class="col-md-3 center">
                         <div class="login-box">
                             <a href="#" class="logo-name text-lg text-center">BugTracker Suite</a>
-                            <p class="text-center m-t-md">Create a BugTracker account</p>
+                            <p class="text-center m-t-md">Create an account</p>
                             @*<form class="m-t-md" action="login.html">*@
                             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
@@ -85,6 +85,12 @@
                                     Timezone:   
                                 </label>
                                     @Html.DropDownList("TimeZone", null, new { @class = "searchable-select" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Profile Picture</label>
+                                    <div class="col-md-10">
+                                        <input name="image" type="file" class="form-control" />  @*INPUT TO UPLOAD IMAGES*@
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block m-t-xs">Submit</button>
                                 <p class="text-center m-t-xs text-sm">Already have an account?</p>

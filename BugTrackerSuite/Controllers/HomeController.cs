@@ -23,6 +23,12 @@ namespace BugTrackerSuite.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Landing()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

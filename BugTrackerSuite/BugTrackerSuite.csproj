@@ -245,6 +245,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CodeFirst\EmailModel.cs" />
+    <Compile Include="Models\CodeFirst\Notification.cs" />
+    <Compile Include="Models\CodeFirst\Universal.cs" />
     <Compile Include="Models\Helpers\HistoryHelper.cs" />
     <Compile Include="Models\ViewModels\AdminUserViewModels.cs" />
     <Compile Include="Models\CodeFirst\Project.cs" />
@@ -3373,7 +3375,7 @@
     <Content Include="Views\Admin\EditUserRoles.cshtml" />
     <Content Include="Views\Project\EditProjectUsers.cshtml" />
     <Content Include="Views\Manage\ChangeName.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\ProfilePage.cshtml" />
     <Content Include="Views\Shared\_ModernLayout.cshtml" />
     <Content Include="TicketAttachments\applying_emailservice.pdf" />
     <Content Include="TicketAttachments\bootstrap_3.pptx" />
@@ -3388,6 +3390,10 @@
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Account\ForgotPassword - Copy.cshtml" />
     <Content Include="Views\Account\Register - Copy.cshtml" />
+    <Content Include="Views\Admin\Index - Copy.cshtml" />
+    <Content Include="Views\Tickets\Details - Copy.cshtml" />
+    <Content Include="Views\Tickets\TimeLine.cshtml" />
+    <Content Include="Views\Home\Landing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
