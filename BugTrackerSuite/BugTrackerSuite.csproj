@@ -3399,6 +3399,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\myFiles\" />
     <Folder Include="obj\Debug\" />
+    <Folder Include="ProfilePics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

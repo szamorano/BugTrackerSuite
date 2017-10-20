@@ -24,7 +24,7 @@ namespace BugTrackerSuite.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Landing()
+        public ActionResult LandingPage()
         {
             return View();
         }
