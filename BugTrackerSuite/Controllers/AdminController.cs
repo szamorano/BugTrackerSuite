@@ -95,7 +95,7 @@ namespace BugTrackerSuite.Controllers
 
         public ActionResult ProfilePage()
         {
-            ViewBag.Message = "Your TimeLine page.";
+            ViewBag.Message = "Your Profile page.";
 
             return View();
         }

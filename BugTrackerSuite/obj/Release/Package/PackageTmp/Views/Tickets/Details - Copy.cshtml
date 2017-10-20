@@ -1,0 +1,296 @@
+﻿@model BugTrackerSuite.Models.CodeFirst.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Assigned User
+            @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignToUser.FirstName)
+        </dd>
+
+        <dt>
+            Owner First Name
+            @*@Html.DisplayNameFor(model => model.OwnerUser.FirstName)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerUser.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Title)
+        </dd>
+
+        <dt>
+            Ticket Type
+            @*@Html.DisplayNameFor(model => model.TickerType.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TickerType.Name)
+        </dd>
+
+        <dt>
+            Ticket Priority
+            @*@Html.DisplayNameFor(model => model.TicketPriority.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketPriority.Name)
+        </dd>
+
+        <dt>
+            Ticket Status
+            @*@Html.DisplayNameFor(model => model.TicketStatus.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketStatus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+        <dt>
+            File Upload
+        </dt>
+
+           
+
+</dl>
+</div>
+
+@using (Html.BeginForm("AttachmentCreate", "Tickets", FormMethod.Post, new { @class = "ticket-ticketAttachment", enctype = "multipart/form-data" }))
+            {
+    @Html.AntiForgeryToken()
+
+
+    <input type="file" name="files" multiple required />
+
+                <input type="hidden" name="ticketId" value="@Model.Id" hidden />
+
+                <button class="btn btn-default btn-lg" type="submit">Attach</button>}
+
+@foreach (var attachment in Model.Attachments)
+{
+    <a href="~/TicketAttachments/@attachment.FileUrl" target="_blank">@attachment.FileUrl</a><br />
+    <p>
+        @Html.ActionLink("Delete", "AttachmentDelete", new { id = attachment.Id }, null)
+    </p>
+}
+
+<hr />
+
+<!-- Comments Form -->
+<div class="card my-4">
+    <h5 class="card-header">Leave a Comment:</h5>
+    <div class="card-body">
+        @using (Html.BeginForm("CommentCreate", "Tickets"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <textarea class="form-control" name="Body" rows="7" required></textarea>
+                <input type="number" name="TicketId" value="@Model.Id" hidden />
+                @*<input type="text" name="Body" rows="7" required />*@
+            </div>
+                        <button type="submit" class="btn btn-primary" value="Send">Submit</button>
+        }
+    </div>
+</div>
+
+
+<!-- Single Comment -->
+@foreach (var comment in Model.Comments)
+{
+    if (comment != null && comment.AuthorId != null)
+    {
+        <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+                <h5 class="mt-0">@comment.Author.FullName</h5><span>Posted on @comment.Created</span>
+                <p>@comment.Body</p>
+            </div>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Delete", "CommentDelete", "Tickets", new { id = comment.Id }, null) |
+    </p>
+}
+
+
+<!-- Ticket History Entries -->
+
+<h3>Ticket History</h3>
+@*<hr style="border-color: #808080;" />*@
+
+@*@foreach (var history in Model.Histories)
+{
+    if (history != null && history.AuthorId != null)
+    {
+        if (history.Property == "NEW TICKET COMMENT")
+        {
+            <div>
+                <p>
+                    <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                    @history.Created<br />
+                    <em>"@history.NewValue"</em>
+                </p>
+            </div>
+        }
+        else if (history.Property == "NEW TICKET ATTACHMENT")
+        {
+            <div>
+                <p>
+                    <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                    @history.Created<br />
+                    <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+                </p>
+            </div>
+        }
+        <hr />
+
+    }
+}*@
+
+
+<!--Chri-->
+@foreach (var history in Model.Histories)
+{
+    if (history != null && history.AuthorId != null)
+    {
+        <div>
+            <p><span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
+            <em>"@history.NewValue"</em>
+        </div>
+        <hr />
+
+
+    }
+    else if (history.Property == "TICKET ATTACHMENT")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+            </p>
+            @Html.ActionLink("Delete", "CommentDelete", new { id = Model.Id }) |
+        </div>
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  DEX  -->
+@*@foreach (var history in Model.Histories)
+{
+    if (history != null && history.AuthorId != null)
+    {
+        <div>
+        <p><span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
+        <em>"@history.NewValue"</em>
+        </div>
+
+        <hr/>
+    }
+
+    else if (history.Property == "NEW TICKET ATTACHMENT")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+            </p>
+        </div>
+    }
+        <hr style="border-color: #808080;" />
+        @history.Created
+        <br />
+        <a href="~/TicketAttachments/@history.NewValue">@history.NewValue</a>
+
+    }*@
+
+
+
+
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>
