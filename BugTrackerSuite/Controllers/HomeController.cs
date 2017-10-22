@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace BugTrackerSuite.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : Universal
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();

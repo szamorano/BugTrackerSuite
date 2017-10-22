@@ -58,7 +58,7 @@
                             <a href="#" class="logo-name text-lg text-center">BugTracker Suite</a>
                             <p class="text-center m-t-md">Create an account</p>
                             @*<form class="m-t-md" action="login.html">*@
-                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "Multipart/form-data" }))
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary("", new { @class = "text-danger" })

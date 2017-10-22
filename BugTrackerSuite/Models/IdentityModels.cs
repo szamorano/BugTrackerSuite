@@ -35,12 +35,14 @@ namespace BugTrackerSuite.Models
             Histories = new HashSet<TicketHistory>();
             Comments = new HashSet<TicketComment>();
             Attachments = new HashSet<TicketAttachment>();
+            Notifications = new HashSet<Notification>();
         }
 
         public virtual ICollection<Project> Projects { get; set; }
         public virtual ICollection<TicketHistory> Histories { get; set; }
         public virtual ICollection<TicketComment> Comments { get; set; }
         public virtual ICollection<TicketAttachment> Attachments { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -71,5 +73,6 @@ namespace BugTrackerSuite.Models
         public DbSet<TicketPriority> TicketPriorities { get; set; }
         public DbSet<TicketStatus> TicketStatuses { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

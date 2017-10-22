@@ -22,7 +22,7 @@ namespace BugTrackerSuite.Models.CodeFirst
                 ViewBag.FullName = user.FullName;
                 ViewBag.UserTimeZone = user.TimeZone;
                 ViewBag.ProfilePic = user.ProfilePic;
-                //ViewBag.Notifications = user.Notifications.ToList();
+                ViewBag.Notifications = user.Notifications.ToList();
 
                 base.OnActionExecuting(filterContext);
             }

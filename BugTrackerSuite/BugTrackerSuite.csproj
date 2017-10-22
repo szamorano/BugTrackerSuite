@@ -4008,6 +4008,8 @@
     <Content Include="landing\assets\plugins\wow\wow.js" />
     <Content Include="landing\assets\plugins\wow\wow.min.js" />
     <Content Include="landing\index.html" />
+    <Content Include="ProfilePics\060410_Facebook_profile_pic_1.jpg" />
+    <Content Include="ProfilePics\lebron.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -4099,7 +4101,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\myFiles\" />
     <Folder Include="obj\Debug\" />
-    <Folder Include="ProfilePics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

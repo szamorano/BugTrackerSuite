@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace BugTrackerSuite.Controllers
 {
     [Authorize]
-    public class TicketsController : Controller
+    public class TicketsController : Universal
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

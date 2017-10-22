@@ -1,4 +1,5 @@
 ﻿using BugTrackerSuite.Models;
+using BugTrackerSuite.Models.CodeFirst;
 using BugTrackerSuite.Models.Helpers;
 using BugTrackerSuite.Models.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -12,7 +13,7 @@ using System.Web.Mvc;
 namespace BugTrackerSuite.Controllers
 {
     [Authorize]
-    public class AdminController : Controller
+    public class AdminController : Universal
     {
         ApplicationDbContext db = new ApplicationDbContext();
 

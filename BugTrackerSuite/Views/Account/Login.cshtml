@@ -84,8 +84,8 @@
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <input name="Email" value="adminemail" hidden />
-                                            <input name="Password" value="adminpassword" hidden />
+                                <input name="Email" value="admin.demo@bugtracker.com" hidden />
+                                            <input name="Password" value="Password1!" hidden />
 
                                             <input type="submit" class="btn btn-dark btn-lg" value="Admin Demo" />
                             }

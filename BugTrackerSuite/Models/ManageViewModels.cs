@@ -48,6 +48,8 @@ namespace BugTrackerSuite.Models
         [Required]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
+
+        public string ProfilePic { get; set; }
     }
 
     public class ChangePasswordViewModel
