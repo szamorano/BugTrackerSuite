@@ -1,19 +1,7 @@
 ﻿@model BugTrackerSuite.Models.ViewModels.UserProfileViewModel
-@{
-    ViewBag.Title = "User Profile";
-}
-
-<h2>User Profile</h2>
-<hr />
-
-
 
     <!-- Title -->
     <title>Modern | Profile</title>
-
-
-    <!-- Theme Styles -->
-    <link href="~/admin1/assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css" />
 
 <div class="page-inner">
                 <div class="profile-cover">
@@ -23,7 +11,7 @@
                                 <img src="@ViewBag.ProfilePic" alt="">
                             </div>
                         </div>
-                        <div class="col-md-12 profile-info">
+                        @*<div class="col-md-12 profile-info">
                             <div class=" profile-info-value">
                                 <h3>1020</h3>
                                 <p>Followers</p>
@@ -36,13 +24,13 @@
                                 <h3>260</h3>
                                 <p>Photos</p>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             <div id="main-wrapper">
                 <div class="row">
                     <div class="col-md-3 user-profile">
-                        <h3 class="text-center">Amily Lee</h3>
+                        <h3 class="text-center">@ViewBag.FullName</h3>
                         <p class="text-center">UI/UX Designer</p>
                         <hr>
                         <ul class="list-unstyled text-center">
@@ -51,10 +39,10 @@
                             <li><p><i class="fa fa-link m-r-xs"></i><a href="#">www.themeforest.net</a></p></li>
                         </ul>
                         <hr>
-                        <button class="btn btn-primary btn-block"><i class="fa fa-plus m-r-xs"></i>Follow</button>
+                        @*<button class="btn btn-primary btn-block"><i class="fa fa-plus m-r-xs"></i>Follow</button>*@
                     </div>
                     <div class="col-md-6 m-t-lg">
-                        <div class="panel panel-white">
+                        @*<div class="panel panel-white">
                             <div class="panel-body">
                                 <div class="post">
                                     <textarea class="form-control" placeholder="Post" rows="4=6"></textarea>
@@ -68,93 +56,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="profile-timeline">
-                            <ul class="list-unstyled">
-                                <li class="timeline-item">
-                                    <div class="panel panel-white">
-                                        <div class="panel-body">
-                                            <div class="timeline-item-header">
-                                                <img src="~/admin1/assets/images/avatar3.png" alt="">
-                                                <p>Christopher palmer <span>Posted a Status</span></p>
-                                                <small>5 hours ago</small>
-                                            </div>
-                                            <div class="timeline-item-post">
-                                                <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                                                <div class="timeline-options">
-                                                    <a href="#"><i class="icon-like"></i> Like (7)</a>
-                                                    <a href="#"><i class="icon-bubble"></i> Comment (2)</a>
-                                                    <a href="#"><i class="icon-share"></i> Share (3)</a>
-                                                </div>
-                                                <div class="timeline-comment">
-                                                    <div class="timeline-comment-header">
-                                                        <img src="~/admin1/assets/images/avatar5.png" alt="">
-                                                        <p>Nick Doe <small>1 hour ago</small></p>
-                                                    </div>
-                                                    <p class="timeline-comment-text">Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                                                </div>
-                                                <div class="timeline-comment">
-                                                    <div class="timeline-comment-header">
-                                                        <img src="~/admin1/assets/images/avatar2.png" alt="">
-                                                        <p>Sandra Smith <small>3 hours ago</small></p>
-                                                    </div>
-                                                    <p class="timeline-comment-text">Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                                                </div>
-                                                <textarea class="form-control" placeholder="Replay"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="panel panel-white">
-                                        <div class="panel-body">
-                                            <div class="timeline-item-header">
-                                                <img src="~/admin1/assets/images/avatar2.png" alt="">
-                                                <p>Sandra Smith <span>Uploaded Photo</span></p>
-                                                <small>2 hours ago</small>
-                                            </div>
-                                            <div class="timeline-item-post">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                                                <img src="~/admin1/assets/images/post-image.jpg" alt="">
-                                                <div class="timeline-options">
-                                                    <a href="#"><i class="icon-like"></i> Like (14)</a>
-                                                    <a href="#"><i class="icon-bubble"></i> Comment (1)</a>
-                                                    <a href="#"><i class="icon-share"></i> Share (5)</a>
-                                                </div>
-                                                <div class="timeline-comment">
-                                                    <div class="timeline-comment-header">
-                                                        <img src="~/admin1/assets/images/avatar5.png" alt="">
-                                                        <p>Nick Doe <small>1 hours ago</small></p>
-                                                    </div>
-                                                    <p class="timeline-comment-text">Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-                                                </div>
-                                                <textarea class="form-control" placeholder="Replay"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-item">
-                                    <div class="panel panel-white">
-                                        <div class="panel-body">
-                                            <div class="timeline-item-header">
-                                                <img src="~/admin1/assets/images/avatar5.png" alt="">
-                                                <p>Nick Doe <span>Was in New York</span></p>
-                                                <small>6 hours ago</small>
-                                            </div>
-                                            <div class="timeline-item-post">
-                                                <div id="map-canvas" style="height: 200px; width: 100%;"></div>
-                                                <div class="timeline-options">
-                                                    <a href="#"><i class="icon-like"></i> Like (3)</a>
-                                                    <a href="#"><i class="icon-bubble"></i> Comment (0)</a>
-                                                    <a href="#"><i class="icon-share"></i> Share (2)</a>
-                                                </div>
-                                                <textarea class="form-control" placeholder="Write a comment..."></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        </div>*@
+                       
                     </div>
                     <div class="col-md-3 m-t-lg">
                         <div class="panel panel-white">
@@ -182,14 +85,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-white">
+                        @*<div class="panel panel-white">
                             <div class="panel-heading">
                                 <div class="panel-title">Some Info</div>
                             </div>
                             <div class="panel-body">
                                 <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="panel panel-white">
                             <div class="panel-heading">
                                 <div class="panel-title">Skills</div>
@@ -214,7 +117,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             
 
     <!-- Javascripts -->
@@ -222,70 +124,8 @@
     <script src="~/admin1/assets/js/pages/profile.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.user.FullName)
-        </dt>
-
-        @*<dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AuthorId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AuthorId)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
+            </div>
+    </div>

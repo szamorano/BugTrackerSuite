@@ -20,6 +20,10 @@ namespace BugTrackerSuite.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.RegisteredUsersPanel = db.Users.Count();
+            ViewBag.ProjectsPanel = db.Projects.Count();
+            ViewBag.TicketsPanel = db.Tickets.Count();
+            ViewBag.NotificationsPanel = db.Notifications.Count();
             return View();
         }
 
@@ -29,12 +33,6 @@ namespace BugTrackerSuite.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {

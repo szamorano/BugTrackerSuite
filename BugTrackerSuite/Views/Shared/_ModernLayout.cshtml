@@ -33,7 +33,7 @@
     <!-- Theme Styles -->
     <link href="~/admin1/assets/css/modern.min.css" rel="stylesheet" type="text/css" />
     <link href="~/admin1/assets/css/custom.css" rel="stylesheet" type="text/css" />
-
+    <link href="~/admin1/assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css" />
     <link href="~/admin1/assets/css/custom.css" rel="stylesheet" />
 
     <script src="~/admin1/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
@@ -118,7 +118,7 @@
     </nav>
     <div class="menu-wrap">
         <nav class="profile-menu">
-            <div class="profile"><img src="@ViewBag.ProfilePic" width="60"/><span>David Green</span></div>
+            <div class="profile"><img src="@ViewBag.ProfilePic" width="60"/><span>@ViewBag.FullName</span></div>
             <div class="profile-menu-list">
                 <a href="#"><i class="fa fa-star"></i><span>Favorites</span></a>
                 <a href="#"><i class="fa fa-bell"></i><span>Alerts</span></a>
@@ -145,7 +145,8 @@
                     </a>
                 </div>
                 <div class="logo-box">
-                    <a href="index.html" class="logo-text"><span>Modern</span></a>
+                    <a href="@Url.Action("Index", "Home", new { @class = "logo-text" })"><span class="logo-text">BugTracker</span></a>
+                    @*<a href="index.html" class="logo-text"><span>BugTracker</span></a>*@
                 </div><!-- Logo Box -->
                 <div class="search-button">
                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
@@ -229,75 +230,17 @@
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-danger pull-right">@ViewBag.Notifications.Count</span></a>
-                                <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                                    <li><p class="drop-title">@ViewBag.Notifications.Count</p></li>
-                                    <li class="dropdown-menu-list slimscroll messages">
-                                        @foreach (var notifications in ViewBag.Notifications)
-                                        {
-                                                           
-                                        <li><a href="@Url.Action("DeleteNotification", "Tickets", new { id = notifications.Id } )"><span class="details"><i class="bg-blue icon_plus_alt2"></i> @notifications.Description</span><span class="time-badge">@notifications.Created</span></a></li>
-                                        }
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online on"></div><img class="img-circle" src="@ViewBag.ProfilePic" alt=""></div>
-                                                    <p class="msg-name">Sandra Smith</p>
-                                                    <p class="msg-text">Hey ! I'm working on your project</p>
-                                                    <p class="msg-time">3 minutes ago</p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online off"></div><img class="img-circle" src="~/admin1/assets/images/avatar4.png" alt=""></div>
-                                                    <p class="msg-name">Amily Lee</p>
-                                                    <p class="msg-text">Hi David !</p>
-                                                    <p class="msg-time">8 minutes ago</p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online off"></div><img class="img-circle" src="~/admin1/assets/images/avatar3.png" alt=""></div>
-                                                    <p class="msg-name">Christopher Palmer</p>
-                                                    <p class="msg-text">See you soon !</p>
-                                                    <p class="msg-time">56 minutes ago</p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online on"></div><img class="img-circle" src="~/admin1/assets/images/avatar5.png" alt=""></div>
-                                                    <p class="msg-name">Nick Doe</p>
-                                                    <p class="msg-text">Nice to meet you</p>
-                                                    <p class="msg-time">2 hours ago</p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online on"></div><img class="img-circle" src="~/admin1/assets/images/avatar2.png" alt=""></div>
-                                                    <p class="msg-name">Sandra Smith</p>
-                                                    <p class="msg-text">Hey ! I'm working on your project</p>
-                                                    <p class="msg-time">5 hours ago</p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <div class="msg-img"><div class="online off"></div><img class="img-circle" src="~/admin1/assets/images/avatar4.png" alt=""></div>
-                                                    <p class="msg-name">Amily Lee</p>
-                                                    <p class="msg-text">Hi David !</p>
-                                                    <p class="msg-time">9 hours ago</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="drop-all"><a href="#" class="text-center">All Messages</a></li>
-                                </ul>
-                            </li>
+              
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-danger pull-right">@ViewBag.Notifications.Count</span></a>
                                 <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                                    <li><p class="drop-title">You have 3 pending tasks !</p></li>
+                                    <li><p class="drop-title">You have @ViewBag.Notifications.Count pending notifications!</p></li>
                                     <li class="dropdown-menu-list slimscroll tasks">
+                                        @foreach (var notifications in ViewBag.Notifications)
+                                        {
+
+                                        <li><a href="@Url.Action("DeleteNotification", "Tickets", new { id = notifications.Id } )"><span class="details"><i class="bg-blue icon_plus_alt2"></i> @notifications.Description</span><span class="time-badge">@notifications.Created</span></a></li>
+                                        }
                                         <ul class="list-unstyled">
                                             <li>
                                                 <a href="#">
@@ -327,26 +270,22 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                                    <span class="user-name">David<i class="fa fa-angle-down"></i></span>
-                                    <img class="img-circle avatar" src="~/admin1/assets/images/avatar1.png" width="40" height="40" alt="">
+                                    <span class="user-name">@ViewBag.FirstName<i class="fa fa-angle-down"></i></span>
+                                    <img class="img-circle avatar" src=@ViewBag.ProfilePic width="40" height="40" alt="">
                                 </a>
                                 <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>
-                                    <li role="presentation"><a href="calendar.html"><i class="fa fa-calendar"></i>Calendar</a></li>
-                                    <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
+                                    <li role="presentation"><a href="@Url.Action("ProfilePage", "Admin", new { @class = "" })"><i class="fa fa-user"></i>Profile</a></li>
+                                    @*<li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>*@
+                                    @*<li role="presentation"><a href="calendar.html"><i class="fa fa-calendar"></i>Calendar</a></li>
+            <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>*@
                                     <li role="presentation" class="divider"></li>
                                     <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
-                                    <li role="presentation"><a href="login.html"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                                    <li role="presentation"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                <a href="javascript:document.getElementById('logoutForm').submit()" class="log-out waves-effect waves-button waves-classic">
                                     <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic" id="showRight">
-                                    <i class="fa fa-comments"></i>
                                 </a>
                             </li>
                         </ul><!-- Nav -->
@@ -360,18 +299,20 @@
                     <div class="sidebar-profile">
                         <a href="javascript:void(0);" id="profile-menu-link">
                             <div class="sidebar-profile-image">
-                                <img src="~/admin1/assets/images/profile-menu-image.png" class="img-circle img-responsive" alt="">
+                                <img src="@ViewBag.ProfilePic" class="img-circle img-responsive" alt="">
                             </div>
                             <div class="sidebar-profile-details">
-                                <span>David Green<br><small>Art Director</small></span>
+                                <span>@ViewBag.FullName<br><small>Director</small></span>
                             </div>
                         </a>
                     </div>
                 </div>
                 <ul class="menu accordion-menu">
-                    <li class="active"><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-                    <li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>
-                    <li class="droplink">
+                    @*<li class="active"><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>*@
+                    <li class="active"><a href="@Url.Action("Index", "Home", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
+                    @*<li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>*@
+                    <li><a href="@Url.Action("ProfilePage", "Admin", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li></li>
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Mailbox</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="inbox.html">Inbox</a></li>
@@ -381,8 +322,8 @@
                             <li><a href="compose.html">Compose</a></li>
                             <li><a href="compose-alt.html">Compose Alt</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="ui-alerts.html">Alerts</a></li>
@@ -399,8 +340,8 @@
                             <li><a href="ui-nestable.html">Nestable</a></li>
                             <li><a href="ui-tree-view.html">Tree View</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Layouts</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="layout-blank.html">Blank Page</a></li>
@@ -414,16 +355,16 @@
                             <li><a href="layout-compact-menu.html">Compact Menu</a></li>
                             <li><a href="layout-hover-menu.html">Hover Menu</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Tables</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="table-static.html">Static Tables</a></li>
                             <li><a href="table-responsive.html">Responsive Tables</a></li>
                             <li><a href="table-data.html">Data Tables</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Forms</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="form-elements.html">Form Elements</a></li>
@@ -434,8 +375,8 @@
                             <li><a href="form-select2.html">Select2</a></li>
                             <li><a href="form-x-editable.html">X-editable</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span><p>Charts</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="charts-sparkline.html">Sparkline</a></li>
@@ -444,8 +385,8 @@
                             <li><a href="charts-flotchart.html">Flotchart</a></li>
                             <li><a href="charts-chartjs.html">Chart.js</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-in"></span><p>Login</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="login.html">Login Form</a></li>
@@ -455,15 +396,15 @@
                             <li><a href="forgot.html">Forgot Password</a></li>
                             <li><a href="lock-screen.html">Lock Screen</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-map-marker"></span><p>Maps</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="maps-google.html">Google Maps</a></li>
                             <li><a href="maps-vector.html">Vector Maps</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Extra</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="404.html">404 Page</a></li>
@@ -480,8 +421,8 @@
                             <li><a href="coming-soon.html">Coming Soon</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
-                    </li>
-                    <li class="droplink">
+                    </li>*@
+                    @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-flash"></span><p>Levels</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li class="droplink">
@@ -498,7 +439,7 @@
                             </li>
                             <li><a href="#">Level 1.2</a></li>
                         </ul>
-                    </li>
+                    </li>*@
                 </ul>
             </div><!-- Page Sidebar Inner -->
         </div><!-- Page Sidebar -->
@@ -510,7 +451,6 @@
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Dashboard</li>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Roles", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
