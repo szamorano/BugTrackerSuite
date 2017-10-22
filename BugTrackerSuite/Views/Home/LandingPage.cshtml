@@ -11,7 +11,7 @@
 <head>
 
     <!-- Title -->
-    <title>Modern | Landing Page</title>
+    <title>BugTracker Suite | Landing Page</title>
 
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta charset="UTF-8">
@@ -50,52 +50,17 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="fa fa-bars"></span>
                 </button>
-                <a class="navbar-brand" href="#">Modern</a>
+                <a class="navbar-brand" href="#">BugTracker Suite</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="http://themeforest.net/item/modern-responsive-admin-dashboard-template/11004840" target="_blank">Download</a></li>
+                    @*<li><a href="http://themeforest.net/item/modern-responsive-admin-dashboard-template/11004840" target="_blank">Download</a></li>*@
+                    <li><a href="@Url.Action("Login", "Account", new { @class = "" })">Log In</a></li>
                 </ul>
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input name="Email" value="admin.demo@bugtracker.com" hidden />
-                                            <input name="Password" value="Password1!" hidden />
-
-                                            <input type="submit" class="btn btn-dark btn-lg" value="Admin Demo" />
-
-                }
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input name="Email" value="ProjectManager.demo@bugtracker.com" hidden />
-                    <input name="Password" value="Password1!" hidden />
-
-                                            <input type="submit" class="btn btn-dark btn-lg" value="Project Manager Demo" />
-
-                }
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input name="Email" value="developer.demo@bugtracker.com" hidden />
-                    <input name="Password" value="Password1!" hidden />
-
-                                            <input type="submit" class="btn btn-dark btn-lg" value="Developer Demo" />
-
-                }
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <input name="Email" value="submitter.demo@bugtracker.com" hidden />
-                    <input name="Password" value="Password1!" hidden />
-
-                                            <input type="submit" class="btn btn-dark btn-lg" value="Submitter Demo" />
-
-                }
+                
             </div>
         </div>
     </nav>
@@ -106,9 +71,57 @@
             <div class="row">
                 <div class="home-text col-md-8">
                     <h1 class="wow fadeInDown" data-wow-delay="1.5s" data-wow-duration="1.5s" data-wow-offset="10">BugTracker Suite.</h1>
-                    <p class="lead wow fadeInDown" data-wow-delay="2s" data-wow-duration="1.5s" data-wow-offset="10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br>Aenean commodo ligula eget dolor.</p>
-                    <a href="http://themeforest.net/item/modern-responsive-admin-dashboard-template/11004840" target="_blank" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Download</a>
-                    <a href="http://lambdathemes.in/" target="_blank" class="btn btn-success btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Live Preview</a>
+                    <p class="lead wow fadeInDown" data-wow-delay="2s" data-wow-duration="1.5s" data-wow-offset="10">The solution to your business's project development tracking needs.</p>
+                    @*<a href="http://themeforest.net/item/modern-responsive-admin-dashboard-template/11004840" target="_blank" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Download</a>
+                    <a href="http://lambdathemes.in/" target="_blank" class="btn btn-success btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Live Preview</a>*@
+                    <div style="display:inline-block">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input name="Email" value="submitter.demo@bugtracker.com" hidden />
+                        <input name="Password" value="Password1!" hidden />
+
+                        <input type="submit" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10" value="Submitter Demo" />
+
+                    }
+                        </div>
+                    <div style="display:inline-block">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input name="Email" value="developer.demo@bugtracker.com" hidden />
+                            <input name="Password" value="Password1!" hidden />
+
+                            <input type="submit" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10" value="Developer Demo" />
+
+                        }
+                        </div>
+                    <div style="display:inline-block">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input name="Email" value="projectManager.demo@bugtracker.com" hidden />
+                            <input name="Password" value="Password1!" hidden />
+
+                            <input type="submit" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10" value="Project Manager Demo" />
+
+                        }
+                    </div>
+                    <div style="display:inline-block">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input name="Email" value="admin.demo@bugtracker.com" hidden />
+                            <input name="Password" value="Password1!" hidden />
+
+                            <input type="submit" class="btn btn-default btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10" value="Admin Demo" />
+
+                        }
+                    </div>
+                    @*<a href="http://lambdathemes.in/" target="_blank" class="btn btn-success btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Live Preview</a>*@
+                    <a href="@Url.Action("Register", "Account")" target="_blank" class="btn btn-success btn-rounded btn-lg wow fadeInUp" data-wow-delay="2.5s" data-wow-duration="1.5s" data-wow-offset="10">Register</a>
+
+                    </div>
                 </div>
                 <div class="scroller">
                     <div class="mouse"><div class="wheel"></div></div>
@@ -123,25 +136,25 @@
                 <div class="feature-icon">
                     <i class="fa fa-laptop"></i>
                 </div>
-                <h2>Fully Responsive</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies</p>
-                <p><a class="btn btn-link" href="#" role="button">View details &raquo;</a></p>
+                <h2>Resource Tracking</h2>
+                <p>Know exactly what your resources are doing at a glance, and manage them to your liking.</p>
+
             </div>
             <div class="col-sm-4 wow fadeInLeft" data-wow-duration="1.5s" data-wow-offset="10" data-wow-delay="0.7s">
                 <div class="feature-icon">
                     <i class="fa fa-lightbulb-o"></i>
                 </div>
-                <h2>Creative Design</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies</p>
-                <p><a class="btn btn-link" href="#" role="button">View details &raquo;</a></p>
+                <h2>Intuitive Design</h2>
+                <p>With a simple to navigate UI design you and your team will be up to speed in no time.</p>
+
             </div>
             <div class="col-sm-4 wow fadeInLeft" data-wow-duration="1.5s" data-wow-offset="10" data-wow-delay="0.9s">
                 <div class="feature-icon">
                     <i class="fa fa-support"></i>
                 </div>
                 <h2>Free Support</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies</p>
-                <p><a class="btn btn-link" href="#" role="button">View details &raquo;</a></p>
+                <p>With our friendly customer support team available 24/7 to address your concerns you can feel assured in any situation.</p>
+
             </div>
         </div>
     </div>
@@ -256,173 +269,7 @@
             </div>
         </div>
     </section>
-    <div class="container" id="pricing">
-        <div class="row">
-            <div class="cd-pricing-container">
-                <div class="cd-pricing-switcher">
-                    <p class="fieldset">
-                        <input type="radio" class="no-uniform" name="duration-1" value="monthly" id="monthly-1" checked>
-                        <label for="monthly-1">Monthly</label>
-                        <input type="radio" class="no-uniform" name="duration-1" value="yearly" id="yearly-1">
-                        <label for="yearly-1">Yearly</label>
-                        <span class="cd-switch"></span>
-                    </p>
-                </div>
-                <ul class="cd-pricing-list cd-bounce-invert">
-                    <li>
-                        <ul class="cd-pricing-wrapper">
-                            <li data-type="monthly" class="is-visible">
-                                <header class="cd-pricing-header">
-                                    <h2>Basic</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">30</span>
-                                        <span class="cd-duration">mo</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>256MB</em> Memory</li>
-                                        <li><em>1</em> User</li>
-                                        <li><em>1</em> Website</li>
-                                        <li><em>1</em> Domain</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                            <li data-type="yearly" class="is-hidden">
-                                <header class="cd-pricing-header">
-                                    <h2>Basic</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">320</span>
-                                        <span class="cd-duration">yr</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>256MB</em> Memory</li>
-                                        <li><em>1</em> User</li>
-                                        <li><em>1</em> Website</li>
-                                        <li><em>1</em> Domain</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="cd-popular">
-                        <ul class="cd-pricing-wrapper">
-                            <li data-type="monthly" class="is-visible">
-                                <header class="cd-pricing-header">
-                                    <h2>Popular</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">60</span>
-                                        <span class="cd-duration">mo</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>512MB</em> Memory</li>
-                                        <li><em>3</em> Users</li>
-                                        <li><em>5</em> Websites</li>
-                                        <li><em>7</em> Domains</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                            <li data-type="yearly" class="is-hidden">
-                                <header class="cd-pricing-header">
-                                    <h2>Popular</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">630</span>
-                                        <span class="cd-duration">yr</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>512MB</em> Memory</li>
-                                        <li><em>3</em> Users</li>
-                                        <li><em>5</em> Websites</li>
-                                        <li><em>7</em> Domains</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <ul class="cd-pricing-wrapper">
-                            <li data-type="monthly" class="is-visible">
-                                <header class="cd-pricing-header">
-                                    <h2>Premier</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">90</span>
-                                        <span class="cd-duration">mo</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>1024MB</em> Memory</li>
-                                        <li><em>5</em> Users</li>
-                                        <li><em>10</em> Websites</li>
-                                        <li><em>10</em> Domains</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                            <li data-type="yearly" class="is-hidden">
-                                <header class="cd-pricing-header">
-                                    <h2>Premier</h2>
-                                    <div class="cd-price">
-                                        <span class="cd-currency">$</span>
-                                        <span class="cd-value">950</span>
-                                        <span class="cd-duration">yr</span>
-                                    </div>
-                                </header>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li><em>1024MB</em> Memory</li>
-                                        <li><em>5</em> Users</li>
-                                        <li><em>10</em> Websites</li>
-                                        <li><em>10</em> Domains</li>
-                                        <li><em>Unlimited</em> Bandwidth</li>
-                                        <li><em>24/7</em> Support</li>
-                                    </ul>
-                                </div>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="#">Select</a>
-                                </footer>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
     <div id="contact">
         <div class="container">
             <div class="row">
