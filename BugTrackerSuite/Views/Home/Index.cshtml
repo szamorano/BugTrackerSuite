@@ -81,7 +81,7 @@
             </div>
         </div>
     </div><!-- Row -->
-    <div class="row">
+    @*<div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="panel panel-dark">
                 <div class="panel-heading">
@@ -186,7 +186,97 @@
             </div>
         </div>
     </div>
-</div><!-- Main Wrapper -->
+</div>*@<!-- Main Wrapper -->
+
+
+    @model IEnumerable<BugTrackerSuite.Models.CodeFirst.Project>
+
+    @{
+        ViewBag.Title = "Project Index";
+    }
+
+    <link href="~/admin1/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin1/assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css" />
+    <div id="main-wrapper">
+
+        <h2>Project Index (Assignments)</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table id="MyTable" class="display table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Created)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Updated)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        TimeZone
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AuthorId)
+                    </th>
+                    <th>Users</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuthorId)
+                        </td>
+                        <td>
+                            @foreach (var user in item.Users)
+                {
+                                @user.FullName<br />
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("Assign Projects", "EditProjectUsers", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+
 
 @section Scripts {
     <script src="~/admin1/assets/plugins/flot/jquery.flot.min.js"></script>
@@ -196,4 +286,16 @@
     <script src="~/admin1/assets/plugins/flot/jquery.flot.tooltip.min.js"></script>
     <script src="~/admin1/assets/plugins/curvedlines/curvedLines.js"></script>
     <script src="~/admin1/assets/js/pages/dashboard.js"></script>
+
+
+
+
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin1/assets/js/pages/table-data.js"></script>
+
+    <script>
+        $("#MyTable").DataTable();
+    </script>
+
 }

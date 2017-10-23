@@ -24,7 +24,9 @@ namespace BugTrackerSuite.Controllers
             ViewBag.ProjectsPanel = db.Projects.Count();
             ViewBag.TicketsPanel = db.Tickets.Count();
             ViewBag.NotificationsPanel = db.Notifications.Count();
-            return View();
+            
+            return View(db.Projects.ToList());       //Original  Method,  its the only line
+            
         }
 
         [AllowAnonymous]
