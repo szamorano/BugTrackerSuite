@@ -302,7 +302,7 @@
                                 <img src="@ViewBag.ProfilePic" class="img-circle img-responsive" alt="">
                             </div>
                             <div class="sidebar-profile-details">
-                                <span>@ViewBag.FullName<br><small>Director</small></span>
+                                <span>@ViewBag.FullName<br><small>@ViewBag.SelectedRoles</small></span>
                             </div>
                         </a>
                     </div>
@@ -311,7 +311,7 @@
                     @*<li class="active"><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>*@
                     <li class="active"><a href="@Url.Action("Index", "Home", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
                     @*<li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>*@
-                    <li><a href="@Url.Action("ProfilePage", "Admin", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li></li>
+                    <li><a href="@Url.Action("ProfilePage", "Admin", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>
                     @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Mailbox</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
@@ -455,7 +455,7 @@
                         <li>@Html.ActionLink("Roles", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                         <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
-                        <li>@Html.Partial("_LoginPartial")</li>
+                        @*<li>@Html.Partial("_LoginPartial")</li>*@
                     </ol>
                 </div>
             </div>

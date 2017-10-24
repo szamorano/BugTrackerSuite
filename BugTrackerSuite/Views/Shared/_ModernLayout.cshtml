@@ -280,6 +280,7 @@
             <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>*@
                                     <li role="presentation" class="divider"></li>
                                     <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
+
                                     <li role="presentation"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                                 </ul>
                             </li>
@@ -311,7 +312,7 @@
                     @*<li class="active"><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>*@
                     <li class="active"><a href="@Url.Action("Index", "Home", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
                     @*<li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>*@
-                    <li><a href="@Url.Action("ProfilePage", "Admin", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li></li>
+                    <li><a href="@Url.Action("ProfilePage", "Admin", new { @class = "waves-effect waves-button" })"><span class="menu-icon glyphicon glyphicon-user"></span><p>Profile</p></a></li>
                     @*<li class="droplink">
                         <a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Mailbox</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
@@ -455,7 +456,7 @@
                         <li>@Html.ActionLink("Roles", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                         <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
-                        <li>@Html.Partial("_LoginPartial")</li>
+                        @*<li>@Html.Partial("_LoginPartial")</li>*@
                     </ol>
                 </div>
             </div>
