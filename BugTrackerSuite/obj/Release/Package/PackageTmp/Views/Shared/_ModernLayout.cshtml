@@ -119,12 +119,12 @@
     <div class="menu-wrap">
         <nav class="profile-menu">
             <div class="profile"><img src="@ViewBag.ProfilePic" width="60"/><span>@ViewBag.FullName</span></div>
-            <div class="profile-menu-list">
+            @*<div class="profile-menu-list">
                 <a href="#"><i class="fa fa-star"></i><span>Favorites</span></a>
                 <a href="#"><i class="fa fa-bell"></i><span>Alerts</span></a>
                 <a href="#"><i class="fa fa-envelope"></i><span>Messages</span></a>
                 <a href="#"><i class="fa fa-comment"></i><span>Comments</span></a>
-            </div>
+            </div>*@
         </nav>
         <button class="close-button" id="close-button">Close Menu</button>
     </div>
@@ -158,7 +158,7 @@
                                 <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                             </li>
                             <li>
-                                <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
+                                @*<a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>*@
                             </li>
                             <li>
                                 <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
@@ -228,7 +228,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+                                @*<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>*@
                             </li>
               
                             <li class="dropdown">
@@ -280,7 +280,13 @@
             <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>*@
                                     <li role="presentation" class="divider"></li>
                                     <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
+                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                    @Html.AntiForgeryToken()
+                                    }
                                     <li role="presentation"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+
+
                                 </ul>
                             </li>
                             <li>
@@ -451,7 +457,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Dashboard</li>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                         <li>@Html.ActionLink("Roles", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                         <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>

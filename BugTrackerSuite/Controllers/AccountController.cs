@@ -154,8 +154,7 @@ namespace BugTrackerSuite.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
         {
-            var pPic = "/ProfilePics/060410_Facebook_profile_pic_1.jpg";
-
+            var pPic = "/ProfilePics/silhouette.svg.hi.png";
             if (image != null && image.ContentLength > 0)
             {
                 var ext = Path.GetExtension(image.FileName).ToLower();

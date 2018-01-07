@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>E-Commerce App</title>
+	<meta charset="utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+
+
+
+
+
+<body class="w3-content" style="max-width:1200px">
+
+    <!--side navbar starts-->
+    <!--<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-label="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        Large Modal
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <input type="email" placeholder="Enter your email" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<nav style="width:130px; position:fixed">
+        <div class="headingforMenu"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+        <div class="myCustomNavItem">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Rolex Gold Series</a>
+            <a href="#">Rolex Bronze Series</a>
+            <a href="#">Rolex Silver Series</a>
+            <div>
+                <a href="#">2016</a>
+                <a href="#">2015</a>
+                <a href="#">2014</a>
+            </div>
+            <a href="#">Straps</a>
+            <a href="#">Parts</a>
+            <a href="#">Tools</a>
+            <a href="#">Accessories</a>
+        </div>
+        <div class="headingforMenu">
+            <a href="#">Contact</a>
+            <a href="#" data-toggle="modal" data-target="#myModal">Newsletter</a>
+            <a href="#">Subscribe</a>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        </div>
+
+    </nav>-->
+    <!--side navbar ends-->
+
+
+
+    <!-- Giant image header -->
+    <div class="w3-display-container w3-container">
+        <img src="Images/3.jpg" alt="Watch" style="width:100%">
+    </div>
+
+    <div class="w3-container w3-text-black">
+        <p>8 items</p>
+    </div>
+
+
+
+
+    <!-- Display product content -->
+    <div class="w3-row">
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <img src="Images/m1.jpg" style="width:100%">
+                <p>CFW-1300<br><b>$2400.00</b></p>
+            </div>
+            <div class="w3-container">
+                <img src="Images/m2.jpg" style="width:100%">
+                <p>CFW-550<br><b>$1500.00</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <img src="Images/m3.jpg" style="width:100%">
+                <p>CFW-1100<br><b>$1600.00</b></p>
+            </div>
+            <div class="w3-container">
+                <img src="Images/m5.jpg" style="width:100%">
+                <p>CFW-1200<br><b>$1650.00</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <img src="Images/m6.jpg" style="width:100%">
+                <p>CFW-850<br><b>$1550.00</b></p>
+            </div>
+            <div class="w3-container">
+                <img src="Images/m7.jpg" style="width:100%">
+                <p>CFW-650<br><b>$950.00</b></p>
+            </div>
+        </div>
+
+        <div class="w3-col l3 s6">
+            <div class="w3-container">
+                <img src="Images/m8.jpg" style="width:100%">
+                <p>CFW-2500<br><b>$8700.00</b></p>
+            </div>
+            <div class="w3-container">
+                <img src="Images/m9.jpg" style="width:100%">
+                <p>CFW-5500<br><b>$15000.00</b></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div class="row">
+        <div class="col-md-3">
+            <img src="Images/m1.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+            <img src="Images/m2.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+            <img src="Images/m3.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+            <img src="Images/m5.jpg" class="img-responsive"/>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+                <img src="Images/m6.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+                <img src="Images/m7.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+                <img src="Images/m8.jpg" class="img-responsive"/>
+        </div>
+        <div class="col-md-3">
+                <img src="Images/m9.jpg" class="img-responsive"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+        <div class="col-md-3">
+            CFW-1300<br />$2400.00
+        </div>
+    </div>-->
+    <!--items content ends-->
+    <!--<div class="mySubscribe">
+        <h1>Subscribe</h1>
+        <p>To get a special offers and <span style="color:red"> VIP </span>treatment:</p>
+        <input style="margin 10px; width:75em" placeholder="Enter e-mail" />
+        <p>
+            <button style="background-color:red">Subscribe</button>
+        </p>
+    </div>-->
+
+    <div class="w3-container w3-black w3-padding-32">
+        <h1>Subscribe</h1>
+        <p>To get special offers and <span style="color:red">VIP</span> treatment:</p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+        <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="w3-padding-32 w3-grey w3-small w3-center" id="footer">
+        <div class="w3-row-padding">
+            <div class="w3-col s4">
+                <h4>Contact</h4>
+                <p>Questions? Go ahead.</p>
+                <form action="/action_page.php" target="_blank">
+                    <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
+                    <button type="submit" class="w3-button w3-block w3-black">Send</button>
+                </form>
+            </div>
+
+            <div class="w3-col s4">
+                <h4>About</h4>
+                <p><a href="#">About us</a></p>
+                <p><a href="#">We're hiring</a></p>
+                <p><a href="#">Support</a></p>
+                <p><a href="#">Find store</a></p>
+                <p><a href="#">Shipment</a></p>
+                <p><a href="#">Payment</a></p>
+                <p><a href="#">Gift card</a></p>
+                <p><a href="#">Return</a></p>
+                <p><a href="#">Help</a></p>
+            </div>
+
+            <div class="w3-col s4">
+                <h4>Store</h4>
+                <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+                <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+                <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+                <h4>We accept</h4>
+                <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+                <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+                <br>
+                <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+                <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
+                <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
+                <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+                <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--<div class="companyInfoSection">
+        <div class="row">
+            <div class="col-md-4">
+                <center>
+                    <h4>Contact</h4>
+                    <p>Questions? Go ahead.</p>
+                    <div><input placeholder="Name" /></div>
+                    <div><input placeholder="Email" /></div>
+                    <div><input placeholder="Subject" /></div>
+                    <div><input placeholder="Message" /></div>
+                    <button>Send</button>
+                </center>
+            </div>
+
+
+
+        <div class="col-md-4">
+            <center>
+                <h4>About</h4>
+                <p><a href="#">About Us</a></p>
+                <p><a href="#">We're hiring</a></p>
+                <p><a href="#">Support</a></p>
+                <p><a href="#">Find store</a></p>
+                <p><a href="#">Shipment</a></p>
+                <p><a href="#">Payment</a></p>
+                <p><a href="#">Gift card</a></p>
+                <p><a href="#">Return</a></p>
+                <a href="#">Help</a>
+            </center>
+        </div>
+
+
+
+        <div class="col-md-4">
+            <center>
+                <h4>Store</h4>
+                <p>Company Name</p>
+                <p>0044125125</p>
+                <p>ex@mail.com</p>
+                <h4>We accept</h4>
+                <p>Amex</p>
+                <p>Credit Card</p>
+            </center>
+        </div>
+    </div>
+
+    </div>-->
+
+    <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.coderfoundry.com" title="CoderFoundry" target="_blank" class="w3-hover-opacity">CoderFoundry</a> &copy;Copyright CoderFoundry</div>
+
+    <!--footer starts-->
+    <!--<footer>
+        <center>
+            <div>
+                <p>
+                    Powered by <a href="https://www.coderfoundry.com">CoderFoundry</a>
+                </p>
+            </div>
+        </center>
+    </footer>-->
+    <!--footer ends-->
+    </div>
+
+    <script>
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+
+</body>
+</html>

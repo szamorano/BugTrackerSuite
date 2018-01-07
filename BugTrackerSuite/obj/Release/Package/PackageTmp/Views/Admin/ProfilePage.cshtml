@@ -8,6 +8,7 @@
                     <div class="row">
                         <div class="col-md-3 profile-image">
                             <div class="profile-image-container">
+                                @*@Html.DisplayFor(model => model.user.ProfilePic)*@
                                 <img src="@ViewBag.ProfilePic" alt="">
                             </div>
                         </div>
@@ -31,12 +32,12 @@
                 <div class="row">
                     <div class="col-md-3 user-profile">
                         <h3 class="text-center">@ViewBag.FullName</h3>
-                        <p class="text-center">UI/UX Designer</p>
+                        <p class="text-center">Member</p>
                         <hr>
                         <ul class="list-unstyled text-center">
-                            <li><p><i class="fa fa-map-marker m-r-xs"></i>Melbourne, Australia</p></li>
-                            <li><p><i class="fa fa-envelope m-r-xs"></i><a href="#">example@mail.com</a></p></li>
-                            <li><p><i class="fa fa-link m-r-xs"></i><a href="#">www.themeforest.net</a></p></li>
+                            <li><p><i class="fa fa-map-marker m-r-xs"></i>United States</p></li>
+                            <li><p><i class="fa fa-envelope m-r-xs"></i><a href="#">@ViewBag.EmailAddress</a></p></li>
+                            @*<li><p><i class="fa fa-link m-r-xs"></i><a href="#">www.themeforest.net</a></p></li>*@
                         </ul>
                         <hr>
                         @*<a href="@Url.Action("Index", "Manage", new { @class = "btn btn-primary btn-block" })"><i class="fa fa-plus m-r-xs"></i>Edit Profile</a>
@@ -44,81 +45,8 @@
                         <button class="btn btn-primary btn-block"><a href="@Url.Action("Index", "Manage")"><i class="fa fa-plus m-r-xs"></i>Edit Profile</a></button>
                         @*<button class="btn btn-primary btn-block"><i class="fa fa-plus m-r-xs"></i>Follow</button>*@
                     </div>
-                    <div class="col-md-6 m-t-lg">
-                        @*<div class="panel panel-white">
-                            <div class="panel-body">
-                                <div class="post">
-                                    <textarea class="form-control" placeholder="Post" rows="4=6"></textarea>
-                                    <div class="post-options">
-                                        <a href="#"><i class="icon-camera"></i></a>
-                                        <a href="#"><i class="icon-camcorder"></i></a>
-                                        <a href="#"><i class="icon-music-tone-alt"></i></a>
-                                        <a href="#"><i class="icon-link"></i></a>
-                                        <a href="#"><i class="icon-microphone"></i></a>
-                                        <button class="btn btn-default pull-right">Post</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
-                       
-                    </div>
-                    <div class="col-md-3 m-t-lg">
-                        <div class="panel panel-white">
-                            <div class="panel-heading">
-                                <div class="panel-title">Team</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="team">
-                                    <div class="team-member">
-                                        <div class="online on"></div>
-                                        <img src="~/admin1/assets/images/avatar1.png" alt="">
-                                    </div>
-                                    <div class="team-member">
-                                        <div class="online off"></div>
-                                        <img src="~/admin1/assets/images/avatar2.png" alt="">
-                                    </div>
-                                    <div class="team-member">
-                                        <div class="online on"></div>
-                                        <img src="~/admin1/assets/images/avatar3.png" alt="">
-                                    </div>
-                                    <div class="team-member">
-                                        <div class="online on"></div>
-                                        <img src="~/admin1/assets/images/avatar5.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @*<div class="panel panel-white">
-                            <div class="panel-heading">
-                                <div class="panel-title">Some Info</div>
-                            </div>
-                            <div class="panel-body">
-                                <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-                            </div>
-                        </div>*@
-                        <div class="panel panel-white">
-                            <div class="panel-heading">
-                                <div class="panel-title">Skills</div>
-                            </div>
-                            <div class="panel-body">
-                                <p>HTML5</p>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                    </div>
-                                </div>
-                                <p>PHP</p>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    </div>
-                                </div>
-                                <p>Javascript</p>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        
+             
                 </div>
             
 
